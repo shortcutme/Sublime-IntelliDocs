@@ -17,7 +17,7 @@ class IntelliDocsCommand(sublime_plugin.TextCommand):
 		buff = self.view.substr(word).strip()
 
 		buff = " "+re.sub(".*\n", "", buff) # Keep only last line
-		match = re.match(".*[^A-Za-z0-9_\.]([A-Za-z0-9_\.]+)[ ]{0,1}\(.*?", buff)
+		match = re.match(".*[^A-Za-z0-9_\.\$]([A-Za-z0-9_\.\$]+)[ ]{0,1}\(.*?", buff)
 		if not match: # No match
 			self.view.erase_status('hint')
 			self.last_function_name = None
@@ -26,11 +26,11 @@ class IntelliDocsCommand(sublime_plugin.TextCommand):
 		#if function_name == self.last_function_name: return # Skip if not cahanged
 		self.last_function_name = function_name
 
-		# Find completions for lang
+		# Find db for lang
 		lang = re.match(".*/(.*?).tmLanguage", self.view.settings().get("syntax")).group(1)
-		if lang not in self.cache: 
+		if lang not in self.cache: #DEBUG disable cache: or 1 == 1
 			path_db = os.path.dirname(os.path.abspath(__file__))+"/db/%s.json" % lang
-			print(path_db)
+			print("Loaded intelliDocs db:", path_db)
 			if os.path.exists(path_db):
 				self.cache[lang] = json.load(open(path_db))
 			else:
@@ -44,19 +44,19 @@ class IntelliDocsCommand(sublime_plugin.TextCommand):
 			if not found and "." in function_name: #If no match try to get without package
 				found = completions.get(re.sub(".*\.", "", function_name))
 			if found:
-				self.view.set_status('hint', found["overview"]+" | ")
+				self.view.set_status('hint', found["syntax"]+" | ")
 				menus = []
-				# Overview
-				menus.append(found["overview"])
+				# Syntax
+				menus.append(found["syntax"])
 
 				# Description
-				for descr in re.sub("(.{80,100}[\.]) ", "\\1||", found["description"]).split("||"): #Spit long description lines
+				for descr in re.sub("(.{80,100}[\.]) ", "\\1||", found["descr"]).split("||"): #Spit long description lines
 					menus.append(" "+descr)
 
 				#Parameters
-				if found["parameters"]:
+				if found["params"]:
 					menus.append("Parameters:")
-				for parameter in found["parameters"]:
+				for parameter in found["params"]:
 					menus.append(" - "+parameter["name"]+": "+parameter["descr"])
 					"""first = True
 					for part in re.sub("(.{50,150}?)\. ", "\\1.|", parameter["descr"]).split("|"):
