@@ -10,6 +10,8 @@ Currenty supported languages:
 
 
 ## Changelog ##
+ - 1.1.1 (2014-03-05)
+   - Added to Package Settings menu for easier configuration
  - 1.1.0 (2014-03-05)
    - Javascript & DOM & jQuery support
    - Custom reference doc links via config. (php.net, api.jquery.com, developer.mozilla.org, docs.python.org configured by default)
@@ -27,6 +29,9 @@ Currenty supported languages:
 
 
 ## Screenshots ##
+
+### Javascript/jQuery ###
+ ![Sublime Javascript hints](https://raw.github.com/shortcutme/Sublime-IntelliDocs/master/wiki/intellidocs-javascript.png)
 
 ### PHP ###
  ![Sublime PHP hints](https://raw.github.com/shortcutme/Sublime-IntelliDocs/master/wiki/intellidocs-php.png)
