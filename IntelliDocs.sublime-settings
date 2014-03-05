@@ -1,0 +1,9 @@
+{
+	"help_links": {
+		".*": "http://devdocs.io/%(path)s",
+		"php": "http://php.net/manual-lookup.php?pattern=%(name)s",
+		"python": "http://docs.python.org/3/search.html?q=%(name)s",
+		"jquery": "http://api.jquery.com/%(name)s",
+		"javascript|dom": "https://developer.mozilla.org/en-US/search?topic=js&topic=html&topic=api&q=%(name)s",
+	}
+}

@@ -7,9 +7,12 @@ class IntelliDocsCommand(sublime_plugin.TextCommand):
 	last_function_name = None
 	last_found = False
 	cache = {}
+	menu_links = {}
+	def __init__(self, view):
+		self.view = view
+		self.settings = sublime.load_settings("IntelliDocs.sublime-settings")
 
 	def run(self, edit):
-
 		# Find function name
 		word = self.view.word(self.view.sel()[0])
 		word.a = word.a - 100 # Look back 100 character
@@ -65,14 +68,25 @@ class IntelliDocsCommand(sublime_plugin.TextCommand):
 						else:
 							menus.append("- "+part)
 						first = False"""
-				menus.append(" > Goto: devdocs.io")
 				self.last_found = found
+
+				menu = self.appendLinks(menus, found)
 					
 				self.view.show_popup_menu(menus, self.action)
 			else:
 				self.view.erase_status('hint')
 
 
+	def appendLinks(self, menus, found):
+		self.menu_links = {}
+		for pattern, link in sorted(self.settings.get("help_links").items()):
+			if re.match(pattern, found["path"]):
+				host = re.match(".*?//(.*?)/", link).group(1)
+				self.menu_links[len(menus)] = link % found
+				menus.append(" > Goto: %s" % host)
+
+		return menus
+
 	def action(self, item):
-		if item > -1:
-			webbrowser.open_new_tab("http://devdocs.io/"+self.last_found["path"])
+		if item in self.menu_links:
+			webbrowser.open_new_tab(self.menu_links[item])
