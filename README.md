@@ -2,7 +2,7 @@ Sublime-IntelliDocs
 ===================
 
 Quick function parameter help for Sublime 3.x.
-Currenty supported languages:
+Currently supported languages:
  - Javascript & DOM & jQuery `new!`
  - PHP
  - Python
@@ -10,6 +10,11 @@ Currenty supported languages:
 
 
 ## Changelog ##
+ - 1.1.5 (2014-03-06)
+   - Support for embedded languages (eg. Javascript in HTML)
+   - Support for Javascript hints in Coffeescript
+   - More intelligent function name matcher
+   - Javascript and jQuery hints working with jQuery syntax
  - 1.1.1 (2014-03-05)
    - Added to Package Settings menu for easier configuration
  - 1.1.0 (2014-03-05)
@@ -22,10 +27,10 @@ Currenty supported languages:
 
 ## Features ##
  - Parameter hint
- - Funcion description
+ - Function description
  - Parameter description
  - Last function hint stays in status bar
- - Open devdocs.io in browser
+ - Open devdocs.io and other, customizable reference docs in browser
 
 
 ## Screenshots ##

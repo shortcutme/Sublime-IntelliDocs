@@ -21,3 +21,6 @@ return $(e.target).parents().children().filter('div.blockUI').length == 0;
 $( document ).ajaxComplete(function() { $( ".log" ).text( "Triggered ajaxComplete handler." ); });
 console.log( $( this ).serializeArray() );
 $.each( fields, function( i, field ) { $( "#results" ).append( field.value + " " ); }).each();
+
+elem.addClass "flash"
+elem[0].remove

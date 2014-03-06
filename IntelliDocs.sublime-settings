@@ -5,5 +5,11 @@
 		"python": "http://docs.python.org/3/search.html?q=%(name)s",
 		"jquery": "http://api.jquery.com/%(name)s",
 		"javascript|dom": "https://developer.mozilla.org/en-US/search?topic=js&topic=html&topic=api&q=%(name)s",
+	},
+	"docs": {
+		"source.php"	: "PHP",
+		"source.js"		: "Javascript",
+		"source.coffee"	: "Javascript",
+		"source.python"	: "Python"
 	}
 }
