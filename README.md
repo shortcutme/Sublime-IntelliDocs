@@ -48,7 +48,10 @@ Currently supported languages:
 ## Installation ##
 
  - Download the [zip-ball](https://github.com/shortcutme/Sublime-IntelliDocs/archive/master.zip) and unpack to `sublime\data\packages` OR via [packageControl](https://sublime.wbond.net/)
- - Add `{ "keys": ["f2"], "command": "intelli_docs" }` to `Preferences`▶`Key Bindings – User`
+
+## Usage ##
+
+- Set your cursor over a function or object you want to look up and press F2 to see relevant documentation
 
 
 ## Thanks to ##
