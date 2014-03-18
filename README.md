@@ -10,6 +10,8 @@ Currently supported languages:
 
 
 ## Changelog ##
+ - 1.1.6 (2014-03-18)
+   - Lookup key binded to F2 by default (thanks tlqmj!)
  - 1.1.5 (2014-03-06)
    - Support for embedded languages (eg. Javascript in HTML)
    - Support for Javascript hints in Coffeescript
